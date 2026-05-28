@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0E4F4A">
+<title>Oído · English Ear Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ============ CURRICULUM (single source of truth — the build script reads this) ============ -->
+<script id="curriculum" type="application/json">
+{
+  "testPhrase": "Hello, this is your voice.",
+  "sections": [
+    {
+      "id": "teen-ty",
+      "name": "-TEEN vs -TY",
+      "tab": "-TEEN / -TY",
+      "why_en": "-TEEN ends in /n/ with stress at the END. -TY ends in /i/ with stress at the FRONT. Flap-T only happens when T sits between two vowels.",
+      "why_es": "-TEEN termina en /n/ con acento al final. -TY con acento al principio.",
+      "pairs": [
+        {"left":{"word":"thirteen","phon":"/ther-TIIN/","es":"trece"},"right":{"word":"thirty","phon":"/THER-ri/","es":"treinta"}},
+        {"left":{"word":"fourteen","phon":"/for-TIIN/","es":"catorce"},"right":{"word":"forty","phon":"/FOR-ri/","es":"cuarenta"}},
+        {"left":{"word":"fifteen","phon":"/fif-TIIN/","es":"quince"},"right":{"word":"fifty","phon":"/FIF-tii/","es":"cincuenta"}},
+        {"left":{"word":"sixteen","phon":"/six-TIIN/","es":"dieciséis"},"right":{"word":"sixty","phon":"/SIKs-tii/","es":"sesenta"}},
+        {"left":{"word":"seventeen","phon":"/se-ven-TIIN/","es":"diecisiete"},"right":{"word":"seventy","phon":"/SE-ven-tii/","es":"setenta"}},
+        {"left":{"word":"eighteen","phon":"/ei-TIIN/","es":"dieciocho"},"right":{"word":"eighty","phon":"/EI-ri/","es":"ochenta"}},
+        {"left":{"word":"nineteen","phon":"/nain-TIIN/","es":"diecinueve"},"right":{"word":"ninety","phon":"/NAIN-tii/","es":"noventa"}}
+      ]
+    },
+    {
+      "id": "short-i-long-ee",
+      "name": "Short i vs Long ee",
+      "tab": "i / ii",
+      "why_en": "Spanish has one /i/. English has two: short /ɪ/ (relaxed jaw) and long /i/ (tense, smiling lips).",
+      "why_es": "El español tiene una sola /i/. El inglés tiene dos: /ɪ/ relajada y /i/ tensa (sonriendo).",
+      "pairs": [
+        {"left":{"word":"ship","phon":"/ship/","es":"barco"},"right":{"word":"sheep","phon":"/shiip/","es":"oveja"}},
+        {"left":{"word":"sit","phon":"/sit/","es":"sentarse"},"right":{"word":"seat","phon":"/siit/","es":"asiento"}},
+        {"left":{"word":"fit","phon":"/fit/","es":"caber"},"right":{"word":"feet","phon":"/fiit/","es":"pies"}},
+        {"left":{"word":"live","phon":"/liv/","es":"vivir","speakAs":"liv"},"right":{"word":"leave","phon":"/liiv/","es":"salir / irse"}},
+        {"left":{"word":"fill","phon":"/fil/","es":"llenar"},"right":{"word":"feel","phon":"/fiil/","es":"sentir"}},
+        {"left":{"word":"hit","phon":"/jit/","es":"golpear"},"right":{"word":"heat","phon":"/jiit/","es":"calor"}},
+        {"left":{"word":"rich","phon":"/rich/","es":"rico"},"right":{"word":"reach","phon":"/riich/","es":"alcanzar"}},
+        {"left":{"word":"bit","phon":"/bit/","es":"pedacito"},"right":{"word":"beat","phon":"/biit/","es":"vencer / latir"}}
+      ]
+    },
+    {
+      "id": "b-v",
+      "name": "B vs V",
+      "tab": "B / V",
+      "why_en": "Spanish merges B and V. In English: B = lips touch. V = top teeth touch the lower lip.",
+      "why_es": "En español B y V suenan igual. B = los labios se tocan. V = dientes superiores tocan el labio inferior.",
+      "pairs": [
+        {"left":{"word":"berry","phon":"/BE-ri/","es":"baya"},"right":{"word":"very","phon":"/VE-ri/","es":"muy"}},
+        {"left":{"word":"boat","phon":"/bout/","es":"barco"},"right":{"word":"vote","phon":"/vout/","es":"voto"}},
+        {"left":{"word":"ban","phon":"/ban/","es":"prohibir"},"right":{"word":"van","phon":"/van/","es":"camioneta"}},
+        {"left":{"word":"bet","phon":"/bet/","es":"apostar"},"right":{"word":"vet","phon":"/vet/","es":"veterinario"}},
+        {"left":{"word":"base","phon":"/beis/","es":"base"},"right":{"word":"vase","phon":"/veis/","es":"jarrón"}},
+        {"left":{"word":"curb","phon":"/kerb/","es":"bordillo"},"right":{"word":"curve","phon":"/kerv/","es":"curva"}},
+        {"left":{"word":"bowl","phon":"/boul/","es":"tazón"},"right":{"word":"vowel","phon":"/VAU-el/","es":"vocal"}},
+        {"left":{"word":"best","phon":"/best/","es":"el mejor"},"right":{"word":"vest","phon":"/vest/","es":"chaleco"}}
+      ]
+    },
+    {
+      "id": "th",
+      "name": "TH vs S / T",
+      "tab": "TH",
+      "why_en": "TH doesn't exist in Spanish. Tongue between the teeth, blow softly. Many speakers replace it with S or T.",
+      "why_es": "TH no existe en español. Lengua entre los dientes, sopla suave. Muchos lo reemplazan con S o T.",
+      "pairs": [
+        {"left":{"word":"think","phon":"/THINK/","es":"pensar"},"right":{"word":"sink","phon":"/SINK/","es":"lavabo"}},
+        {"left":{"word":"three","phon":"/THRII/","es":"tres"},"right":{"word":"tree","phon":"/TRII/","es":"árbol"}},
+        {"left":{"word":"thin","phon":"/THIN/","es":"delgado"},"right":{"word":"tin","phon":"/TIN/","es":"lata"}},
+        {"left":{"word":"thigh","phon":"/THAI/","es":"muslo"},"right":{"word":"tie","phon":"/TAI/","es":"corbata"}},
+        {"left":{"word":"thank","phon":"/THANK/","es":"agradecer"},"right":{"word":"sank","phon":"/SANK/","es":"se hundió"}},
+        {"left":{"word":"path","phon":"/PATH/","es":"camino"},"right":{"word":"pass","phon":"/PAS/","es":"pasar"}},
+        {"left":{"word":"both","phon":"/BOTH/","es":"ambos"},"right":{"word":"boat","phon":"/BOUT/","es":"barco"}},
+        {"left":{"word":"then","phon":"/DHEN/","es":"entonces"},"right":{"word":"den","phon":"/DEN/","es":"guarida"}}
+      ]
+    },
+    {
+      "id": "h",
+      "name": "H vs silent",
+      "tab": "H",
+      "why_en": "Spanish H is silent. English H breathes — like blowing on cold hands.",
+      "why_es": "La H española es muda. La H inglesa sopla — como soplar manos frías.",
+      "pairs": [
+        {"left":{"word":"hat","phon":"/jat/","es":"sombrero"},"right":{"word":"at","phon":"/at/","es":"en"}},
+        {"left":{"word":"hit","phon":"/jit/","es":"golpear"},"right":{"word":"it","phon":"/it/","es":"lo / la"}},
+        {"left":{"word":"hill","phon":"/jil/","es":"colina"},"right":{"word":"ill","phon":"/il/","es":"enfermo"}},
+        {"left":{"word":"hold","phon":"/jold/","es":"sostener"},"right":{"word":"old","phon":"/old/","es":"viejo"}},
+        {"left":{"word":"heat","phon":"/jiit/","es":"calor"},"right":{"word":"eat","phon":"/iit/","es":"comer"}},
+        {"left":{"word":"hair","phon":"/jeir/","es":"pelo"},"right":{"word":"air","phon":"/eir/","es":"aire"}},
+        {"left":{"word":"hear","phon":"/jiir/","es":"oír"},"right":{"word":"ear","phon":"/iir/","es":"oreja"}},
+        {"left":{"word":"his","phon":"/jiz/","es":"su (de él)"},"right":{"word":"is","phon":"/iz/","es":"es / está"}}
+      ]
+    },
+    {
+      "id": "ed",
+      "name": "-ED endings",
+      "tab": "-ED",
+      "why_en": "Past -ED has THREE sounds: /t/ after voiceless, /d/ after voiced, /id/ only after T or D. Don't add a syllable when there's no T or D.",
+      "why_es": "El -ED tiene TRES sonidos: /t/ después de mudas, /d/ después de sonoras, /id/ solo después de T o D.",
+      "pairs": [
+        {"left":{"word":"worked","phon":"/uerkt/","es":"trabajé"},"right":{"word":"needed","phon":"/NI-rid/","es":"necesité"}},
+        {"left":{"word":"asked","phon":"/askt/","es":"pregunté"},"right":{"word":"wanted","phon":"/UAN-rid/","es":"quise"}},
+        {"left":{"word":"watched","phon":"/uacht/","es":"miré"},"right":{"word":"decided","phon":"/di-SAI-rid/","es":"decidí"}},
+        {"left":{"word":"helped","phon":"/jelpt/","es":"ayudé"},"right":{"word":"visited","phon":"/VI-zi-rid/","es":"visité"}},
+        {"left":{"word":"lived","phon":"/livd/","es":"viví"},"right":{"word":"started","phon":"/STAR-rid/","es":"empecé"}},
+        {"left":{"word":"called","phon":"/kold/","es":"llamé"},"right":{"word":"ended","phon":"/EN-did/","es":"terminé"}},
+        {"left":{"word":"played","phon":"/pleid/","es":"jugué"},"right":{"word":"invited","phon":"/in-VAI-rid/","es":"invité"}},
+        {"left":{"word":"moved","phon":"/muvd/","es":"me mudé"},"right":{"word":"waited","phon":"/UEI-rid/","es":"esperé"}}
+      ]
+    },
+    {
+      "id": "sh-ch",
+      "name": "SH vs CH",
+      "tab": "SH / CH",
+      "why_en": "Spanish only has CH. SH is softer — like asking for silence, \"shhh\". CH has a stronger burst.",
+      "why_es": "El español solo tiene CH. SH es más suave — como pedir silencio \"shhh\".",
+      "pairs": [
+        {"left":{"word":"sheep","phon":"/shiip/","es":"oveja"},"right":{"word":"cheap","phon":"/chiip/","es":"barato"}},
+        {"left":{"word":"ship","phon":"/ship/","es":"barco"},"right":{"word":"chip","phon":"/chip/","es":"papita"}},
+        {"left":{"word":"share","phon":"/sher/","es":"compartir"},"right":{"word":"chair","phon":"/cher/","es":"silla"}},
+        {"left":{"word":"shop","phon":"/shop/","es":"tienda"},"right":{"word":"chop","phon":"/chop/","es":"cortar"}},
+        {"left":{"word":"shoes","phon":"/shuus/","es":"zapatos"},"right":{"word":"choose","phon":"/chuus/","es":"elegir"}},
+        {"left":{"word":"wash","phon":"/uash/","es":"lavar"},"right":{"word":"watch","phon":"/uach/","es":"mirar"}},
+        {"left":{"word":"shore","phon":"/shoor/","es":"orilla"},"right":{"word":"chore","phon":"/choor/","es":"tarea doméstica"}},
+        {"left":{"word":"sheet","phon":"/shiit/","es":"sábana"},"right":{"word":"cheat","phon":"/chiit/","es":"hacer trampa"}}
+      ]
+    },
+    {
+      "id": "flap-t",
+      "name": "Flap T (T → R)",
+      "tab": "Flap T",
+      "why_en": "American T between two vowels becomes a soft R. Water = /WAA-rer/. It needs a vowel on BOTH sides — that's why city flaps but sixty doesn't.",
+      "why_es": "La T americana entre dos vocales se convierte en R suave. Necesita una vocal a CADA LADO.",
+      "pairs": [
+        {"left":{"word":"water","phon":"/WAA-rer/","es":"agua"},"right":{"word":"butter","phon":"/BO-rer/","es":"mantequilla"}},
+        {"left":{"word":"better","phon":"/BE-rer/","es":"mejor"},"right":{"word":"letter","phon":"/LE-rer/","es":"carta"}},
+        {"left":{"word":"city","phon":"/SI-ri/","es":"ciudad"},"right":{"word":"pretty","phon":"/PRI-ri/","es":"bonito"}},
+        {"left":{"word":"photo","phon":"/FO-ro/","es":"foto"},"right":{"word":"meeting","phon":"/MII-ring/","es":"reunión"}},
+        {"left":{"word":"daughter","phon":"/DO-rer/","es":"hija"},"right":{"word":"computer","phon":"/kom-PIU-rer/","es":"computadora"}},
+        {"left":{"word":"forty","phon":"/FOR-ri/","es":"cuarenta"},"right":{"word":"eighty","phon":"/EI-ri/","es":"ochenta"}},
+        {"left":{"word":"Saturday","phon":"/SAA-rer-dei/","es":"sábado"},"right":{"word":"native","phon":"/NEI-riv/","es":"nativo"}},
+        {"left":{"word":"visited","phon":"/VI-zi-rid/","es":"visité"},"right":{"word":"decided","phon":"/di-SAI-rid/","es":"decidí"}}
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- ============ EMBEDDED PREMIUM AUDIO (empty by default; filled by generate_audio.py) ============ -->
+<script id="embedded-audio" type="application/json">{"voices":[],"clips":{}}</script>
+
+<style>
+  :root{
+    --cream:#FBF6EC;
+    --cream-2:#F4ECDC;
+    --paper:#FFFFFF;
+    --teal:#0E4F4A;
+    --teal-2:#16766C;
+    --teal-soft:#DCEDE9;
+    --coral:#E8553F;
+    --coral-soft:#FBE3DC;
+    --ink:#23332F;
+    --muted:#6E7E78;
+    --line:#E3DAC8;
+    --shadow:18px 18px 0 rgba(14,79,74,.06);
+    --r:20px;
+    --safe:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background-image:radial-gradient(circle at 12% 8%, rgba(232,85,63,.05), transparent 38%),
+                     radial-gradient(circle at 88% 92%, rgba(22,118,108,.06), transparent 42%);
+  }
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");}
+
+  /* ---------- top bar ---------- */
+  header.bar{position:sticky;top:0;z-index:40;background:rgba(251,246,236,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);}
+  .masthead{max-width:760px;margin:0 auto;padding:14px 18px 8px;}
+  .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:700;}
+  .titleRow{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:1px;}
+  .title{font-family:"Fraunces",serif;font-weight:900;font-size:38px;line-height:.92;color:var(--teal);letter-spacing:-.01em;}
+  .title em{font-style:italic;font-weight:600;color:var(--coral);}
+  .subtitle{font-size:12.5px;color:var(--muted);margin-top:3px;}
+  .forname{font-style:italic;font-family:"Fraunces",serif;color:var(--teal-2);}
+  .score{flex:0 0 auto;text-align:right;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+  .score b{display:block;font-family:"Fraunces",serif;font-style:normal;font-weight:900;font-size:22px;color:var(--teal);letter-spacing:0;}
+
+  /* ---------- voice controls ---------- */
+  .voicebar{max-width:760px;margin:0 auto;padding:6px 18px 12px;display:flex;gap:8px;align-items:center;}
+  .vselect{flex:1;position:relative;}
+  select#voicePicker{
+    width:100%;appearance:none;-webkit-appearance:none;
+    background:var(--paper);border:1.5px solid var(--line);border-radius:14px;
+    padding:11px 38px 11px 14px;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--teal);
+    box-shadow:0 2px 0 rgba(14,79,74,.05);}
+  .vselect::after{content:"▾";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--coral);pointer-events:none;font-size:12px;}
+  button.test{flex:0 0 auto;border:none;background:var(--teal);color:#fff;font-family:inherit;font-weight:700;font-size:13px;
+    padding:11px 14px;border-radius:14px;display:flex;align-items:center;gap:6px;box-shadow:0 2px 0 #0a3b37;cursor:pointer;}
+  button.test:active{transform:translateY(1px);box-shadow:0 1px 0 #0a3b37;}
+
+  /* ---------- section tabs ---------- */
+  nav.tabs{position:sticky;top:0;z-index:30;background:var(--teal);}
+  .tabscroll{max-width:760px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;padding:7px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .tabscroll::-webkit-scrollbar{display:none;}
+  .tab{flex:0 0 auto;border:none;background:transparent;color:rgba(255,255,255,.62);font-family:inherit;font-weight:700;
+    font-size:13px;padding:7px 13px;border-radius:11px;white-space:nowrap;cursor:pointer;transition:.15s;letter-spacing:.01em;}
+  .tab .n{font-family:"Fraunces",serif;font-weight:900;margin-right:5px;opacity:.6;}
+  .tab.active{background:var(--coral);color:#fff;box-shadow:0 2px 0 #b83d2b;}
+  .tab.active .n{opacity:.85;}
+
+  /* ---------- content ---------- */
+  main{max-width:760px;margin:0 auto;padding:8px 16px calc(40px + var(--safe));position:relative;z-index:1;}
+  section.snd{padding-top:18px;scroll-margin-top:108px;}
+  .shead{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+  .snum{font-family:"Fraunces",serif;font-weight:900;font-size:15px;color:#fff;background:var(--coral);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:0 2px 0 #b83d2b;align-self:center;}
+  .sname{font-family:"Fraunces",serif;font-weight:900;font-size:25px;color:var(--teal);letter-spacing:-.01em;line-height:1;}
+  .sbadge{margin-left:auto;font-size:11px;color:var(--muted);background:var(--teal-soft);padding:4px 9px;border-radius:20px;font-weight:700;white-space:nowrap;}
+  .why{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:14px;padding:12px 15px;margin:10px 0 16px;}
+  .why .en{font-size:14px;color:var(--ink);font-weight:500;}
+  .why .es{font-size:13px;color:var(--muted);font-style:italic;font-family:"Fraunces",serif;margin-top:6px;}
+
+  .pair{display:grid;grid-template-columns:1fr 30px 1fr;gap:8px;align-items:stretch;margin-bottom:10px;}
+  .swap{display:flex;align-items:center;justify-content:center;color:var(--coral);font-weight:800;font-size:15px;font-family:"Fraunces",serif;}
+  .card{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:12px 12px 11px;min-height:84px;
+    display:flex;flex-direction:column;justify-content:center;cursor:pointer;position:relative;overflow:hidden;
+    box-shadow:0 3px 0 rgba(14,79,74,.05);transition:transform .08s, box-shadow .12s, border-color .12s;text-align:left;}
+  .card:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(14,79,74,.05);}
+  .card .w{font-family:"Fraunces",serif;font-weight:600;font-size:25px;color:var(--teal);line-height:1.02;letter-spacing:-.01em;}
+  .card .p{font-size:13px;color:var(--coral);font-weight:700;margin-top:3px;font-family:"Hanken Grotesk";}
+  .card .e{font-size:12.5px;color:var(--muted);font-style:italic;font-family:"Fraunces",serif;margin-top:3px;}
+  .card .spk{position:absolute;top:9px;right:10px;font-size:13px;color:var(--teal-2);opacity:.4;}
+  .card.playing{border-color:var(--coral);box-shadow:0 0 0 3px var(--coral-soft);}
+  .card.playing .spk{opacity:1;animation:pulse .7s infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+  .quizbtn{width:100%;margin:6px 0 4px;border:none;background:var(--teal);color:#fff;font-family:inherit;font-weight:800;
+    font-size:15px;padding:15px;border-radius:16px;cursor:pointer;box-shadow:0 3px 0 #0a3b37;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .quizbtn:active{transform:translateY(2px);box-shadow:0 1px 0 #0a3b37;}
+  .quizbtn .ico{font-size:17px;}
+
+  .divider{height:1px;background:var(--line);margin:22px 0 0;}
+
+  footer{max-width:760px;margin:0 auto;padding:26px 18px 40px;text-align:center;color:var(--muted);font-size:12px;position:relative;z-index:1;}
+  footer b{color:var(--teal);font-family:"Fraunces",serif;}
+
+  /* ---------- quiz overlay ---------- */
+  .overlay{position:fixed;inset:0;z-index:80;background:rgba(14,79,74,.42);backdrop-filter:blur(5px);
+    display:none;align-items:flex-end;justify-content:center;}
+  .overlay.show{display:flex;animation:fade .2s;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .sheet{background:var(--cream);width:100%;max-width:560px;border-radius:26px 26px 0 0;padding:18px 18px calc(26px + var(--safe));
+    box-shadow:0 -18px 40px rgba(0,0,0,.18);animation:rise .28s cubic-bezier(.2,.8,.2,1);max-height:92vh;overflow-y:auto;}
+  @keyframes rise{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .qtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+  .qtitle{font-family:"Fraunces",serif;font-weight:900;font-size:20px;color:var(--teal);}
+  .qclose{border:none;background:var(--teal-soft);color:var(--teal);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;font-weight:700;}
+  .qprog{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  .qscorerow{display:flex;gap:8px;margin:10px 0 18px;}
+  .qstat{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:9px;text-align:center;}
+  .qstat span{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;}
+  .qstat b{font-family:"Fraunces",serif;font-size:22px;color:var(--teal);}
+  .qstat.ok b{color:var(--teal-2);}
+  .qstat.no b{color:var(--coral);}
+
+  .qprompt{text-align:center;margin:6px 0 18px;}
+  .qprompt .lead{font-size:13px;color:var(--muted);margin-bottom:12px;}
+  .bigplay{border:none;background:var(--coral);color:#fff;width:108px;height:108px;border-radius:50%;font-size:40px;cursor:pointer;
+    box-shadow:0 5px 0 #b83d2b;display:inline-flex;align-items:center;justify-content:center;}
+  .bigplay:active{transform:translateY(3px);box-shadow:0 2px 0 #b83d2b;}
+  .bigplay.playing{animation:ring 1s infinite;}
+  @keyframes ring{0%,100%{box-shadow:0 5px 0 #b83d2b}50%{box-shadow:0 5px 0 #b83d2b,0 0 0 14px rgba(232,85,63,.18)}}
+
+  .qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .qopt{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 10px;min-height:92px;cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:.12s;}
+  .qopt:active{transform:scale(.97);}
+  .qopt .w{font-family:"Fraunces",serif;font-weight:600;font-size:26px;color:var(--teal);}
+  .qopt .p{font-size:12.5px;color:var(--muted);font-weight:600;opacity:0;transition:.2s;}
+  .qopt.reveal .p{opacity:1;color:var(--coral);}
+  .qopt.correct{border-color:var(--teal-2);background:#E7F4F0;}
+  .qopt.wrong{border-color:var(--coral);background:var(--coral-soft);}
+  .qfeedback{text-align:center;min-height:26px;margin-top:14px;font-weight:800;font-size:16px;font-family:"Fraunces",serif;}
+  .qfeedback.good{color:var(--teal-2);}
+  .qfeedback.bad{color:var(--coral);}
+  .qnext{width:100%;margin-top:14px;border:none;background:var(--teal);color:#fff;font-family:inherit;font-weight:800;font-size:15px;
+    padding:14px;border-radius:16px;cursor:pointer;box-shadow:0 3px 0 #0a3b37;opacity:.35;pointer-events:none;transition:opacity .2s;}
+  .qnext.on{opacity:1;pointer-events:auto;}
+  .qnext:active{transform:translateY(2px);box-shadow:0 1px 0 #0a3b37;}
+
+  .toast{position:fixed;left:50%;bottom:calc(20px + var(--safe));transform:translateX(-50%);z-index:120;background:var(--teal);color:#fff;
+    padding:11px 18px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.2);opacity:0;transition:.25s;pointer-events:none;max-width:90vw;text-align:center;}
+  .toast.show{opacity:1;}
+
+  @media(min-width:560px){
+    .title{font-size:46px;}
+    .card .w{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="bar">
+  <div class="masthead">
+    <div class="kicker">ARCHES Language School · Ear Training</div>
+    <div class="titleRow">
+      <div>
+        <div class="title">Oíd<em>o</em></div>
+        <div class="subtitle" id="subtitle">Entrena tu oído · minimal-pair listening</div>
+      </div>
+      <div class="score">Puntos<b id="totalScore">0</b><span id="totalSub">0 intentos</span></div>
+    </div>
+  </div>
+  <div class="voicebar">
+    <div class="vselect"><select id="voicePicker" aria-label="Choose a voice"></select></div>
+    <button class="test" id="testVoice">🔊 Probar</button>
+  </div>
+</header>
+
+<nav class="tabs"><div class="tabscroll" id="tabscroll"></div></nav>
+
+<main id="main"></main>
+
+<footer>
+  <b>Oído</b> · Tap a card to hear it · Toca una tarjeta para escucharla<br>
+  Hecho con cariño para tus estudiantes.
+</footer>
+
+<!-- Quiz overlay -->
+<div class="overlay" id="overlay">
+  <div class="sheet">
+    <div class="qtop">
+      <div class="qtitle" id="qTitle">Quiz</div>
+      <div class="qprog" id="qProg">1</div>
+      <button class="qclose" id="qClose">✕</button>
+    </div>
+    <div class="qscorerow">
+      <div class="qstat ok"><span>Aciertos</span><b id="qOk">0</b></div>
+      <div class="qstat no"><span>Errores</span><b id="qNo">0</b></div>
+      <div class="qstat"><span>Racha</span><b id="qStreak">0</b></div>
+    </div>
+    <div class="qprompt">
+      <div class="lead">¿Cuál palabra escuchaste? · Which word did you hear?</div>
+      <button class="bigplay" id="bigPlay">🔊</button>
+    </div>
+    <div class="qopts" id="qOpts"></div>
+    <div class="qfeedback" id="qFeedback"></div>
+    <button class="qnext" id="qNext">Siguiente →</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  const CURR = JSON.parse(document.getElementById('curriculum').textContent);
+  const EMB  = JSON.parse(document.getElementById('embedded-audio').textContent);
+  const $ = s=>document.querySelector(s);
+
+  /* ---------- student name personalization ---------- */
+  const params = new URLSearchParams(location.search);
+  const studentName = params.get('name') || params.get('student') || "";
+  if(studentName){
+    $('#subtitle').innerHTML = 'Hecho para <span class="forname">'+escapeHtml(studentName)+'</span> · minimal-pair listening';
+  }
+  function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+  /* =========================================================
+     VOICES  —  premium embedded (preferred) + device fallback
+     ========================================================= */
+  const hasEmbedded = EMB && EMB.voices && EMB.voices.length>0;
+  let voiceList = [];          // unified list {id,label,gender,kind,deviceVoice?}
+  let currentVoiceId = localStorage.getItem('oido_voice') || "";
+
+  const FEMALE = ['samantha','karen','moira','tessa','victoria','allison','ava','susan','vicki','kate','serena','fiona','catherine','nicky','zoe','aria','jenny','zira','female','nova','shimmer','sara','emma','amelie','paloma','monica','soledad','helena','google us english','google uk english female'];
+  const MALE   = ['daniel','alex','fred','aaron','arthur','gordon','oliver','rishi','tom','david','guy','mark','onyx','echo','male','diego','jorge','carlos','google uk english male'];
+  function guessGender(name){
+    const n=(name||'').toLowerCase();
+    if(FEMALE.some(k=>n.includes(k))) return 'f';
+    if(MALE.some(k=>n.includes(k))) return 'm';
+    return '?';
+  }
+  const sym = g=> g==='f'?'♀':(g==='m'?'♂':'·');
+
+  function buildVoiceList(){
+    voiceList = [];
+    // 1) premium embedded voices first
+    if(hasEmbedded){
+      EMB.voices.forEach(v=>{
+        voiceList.push({id:'emb:'+v.id, label:cap(v.label||v.id)+' (Premium US)', gender:v.gender||guessGender(v.id), kind:'premium', key:v.id});
+      });
+    }
+    // 2) device (browser) voices
+    const dv = (window.speechSynthesis ? speechSynthesis.getVoices() : []) || [];
+    const enDev = dv.filter(v=>/^en(-|_|$)/i.test(v.lang));
+    enDev.forEach(v=>{
+      voiceList.push({id:'dev:'+v.name, label:v.name+' ('+v.lang+')', gender:guessGender(v.name), kind:'device', deviceVoice:v});
+    });
+    // sort: premium first, then female US, then everything
+    const score = v=>{
+      let s=0;
+      if(v.kind==='premium') s-=100;
+      if(v.gender==='f') s-=20;
+      if(v.deviceVoice && /en-US|en_US/i.test(v.deviceVoice.lang)) s-=10;
+      return s;
+    };
+    voiceList.sort((a,b)=>score(a)-score(b));
+    if(!voiceList.length){
+      voiceList.push({id:'dev:default',label:'Default voice',gender:'?',kind:'device',deviceVoice:null});
+    }
+    if(!voiceList.find(v=>v.id===currentVoiceId)) currentVoiceId = voiceList[0].id;
+    renderPicker();
+  }
+  function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+
+  function renderPicker(){
+    const sel = $('#voicePicker');
+    sel.innerHTML='';
+    voiceList.forEach(v=>{
+      const o=document.createElement('option');
+      o.value=v.id; o.textContent=sym(v.gender)+'  '+v.label;
+      if(v.id===currentVoiceId) o.selected=true;
+      sel.appendChild(o);
+    });
+  }
+  $('#voicePicker').addEventListener('change',e=>{
+    currentVoiceId=e.target.value;
+    localStorage.setItem('oido_voice',currentVoiceId);
+    speakRaw(CURR.testPhrase);
+  });
+
+  if(window.speechSynthesis){
+    speechSynthesis.onvoiceschanged = buildVoiceList;
+  }
+  buildVoiceList();
+  // some browsers populate voices late
+  setTimeout(buildVoiceList, 350);
+  setTimeout(buildVoiceList, 1200);
+
+  /* =========================================================
+     SPEAK
+     ========================================================= */
+  let currentAudio = null;
+  function curVoice(){ return voiceList.find(v=>v.id===currentVoiceId) || voiceList[0]; }
+
+  // text = what to pronounce (speakAs override); key = audio lookup key (speakAs||word)
+  function speak(text, key, cardEl){
+    stopAll();
+    const v = curVoice();
+    const onStart = ()=>{ if(cardEl) cardEl.classList.add('playing'); };
+    const onEnd   = ()=>{ if(cardEl) cardEl.classList.remove('playing'); };
+
+    if(v && v.kind==='premium' && EMB.clips[v.key] && EMB.clips[v.key][key]){
+      try{
+        currentAudio = new Audio(EMB.clips[v.key][key]);
+        currentAudio.onplay = onStart;
+        currentAudio.onended = onEnd;
+        currentAudio.onerror = ()=>{ onEnd(); deviceSpeak(text,onStart,onEnd); };
+        currentAudio.play().catch(()=>{ deviceSpeak(text,onStart,onEnd); });
+        return;
+      }catch(e){ /* fall through */ }
+    }
+    deviceSpeak(text,onStart,onEnd);
+  }
+  function deviceSpeak(text,onStart,onEnd){
+    if(!window.speechSynthesis){ onStart&&onStart(); setTimeout(()=>onEnd&&onEnd(),500); return; }
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const v = curVoice();
+    if(v && v.deviceVoice){ u.voice=v.deviceVoice; u.lang=v.deviceVoice.lang; }
+    else { u.lang='en-US'; }
+    u.rate=0.92; u.pitch=1.0;
+    u.onstart=()=>onStart&&onStart();
+    u.onend=()=>onEnd&&onEnd();
+    onStart&&onStart(); // iOS sometimes skips onstart
+    speechSynthesis.speak(u);
+  }
+  function speakRaw(text){ speak(text, text, null); }
+  function stopAll(){
+    if(window.speechSynthesis) speechSynthesis.cancel();
+    if(currentAudio){ try{currentAudio.pause();}catch(e){} currentAudio=null; }
+    document.querySelectorAll('.card.playing').forEach(c=>c.classList.remove('playing'));
+  }
+  $('#testVoice').addEventListener('click',()=>speakRaw(CURR.testPhrase));
+
+  /* =========================================================
+     SCORES (persist)
+     ========================================================= */
+  let scores = {};
+  try{ scores = JSON.parse(localStorage.getItem('oido_scores')||'{}'); }catch(e){ scores={}; }
+  function secScore(id){ return scores[id] || {ok:0,total:0}; }
+  function saveScores(){ localStorage.setItem('oido_scores',JSON.stringify(scores)); refreshTotals(); }
+  function refreshTotals(){
+    let ok=0,total=0;
+    Object.values(scores).forEach(s=>{ok+=s.ok;total+=s.total;});
+    $('#totalScore').textContent = ok;
+    $('#totalSub').textContent = total+' intento'+(total===1?'':'s');
+    CURR.sections.forEach(sec=>{
+      const b=document.getElementById('badge-'+sec.id);
+      if(b){ const s=secScore(sec.id); b.textContent = s.total? s.ok+'/'+s.total+' aciertos' : 'sin practicar'; }
+    });
+  }
+
+  /* =========================================================
+     RENDER SECTIONS + TABS
+     ========================================================= */
+  const tabscroll = $('#tabscroll'), main = $('#main');
+  CURR.sections.forEach((sec,i)=>{
+    const tab=document.createElement('button');
+    tab.className='tab'+(i===0?' active':'');
+    tab.dataset.target=sec.id;
+    tab.innerHTML='<span class="n">'+(i+1)+'</span>'+sec.tab;
+    tab.addEventListener('click',()=>{
+      document.getElementById('sec-'+sec.id).scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    tabscroll.appendChild(tab);
+
+    const s=document.createElement('section');
+    s.className='snd'; s.id='sec-'+sec.id;
+    let html='<div class="shead"><div class="snum">'+(i+1)+'</div>'+
+             '<div class="sname">'+escapeHtml(sec.name)+'</div>'+
+             '<div class="sbadge" id="badge-'+sec.id+'">sin practicar</div></div>'+
+             '<div class="why"><div class="en">'+escapeHtml(sec.why_en)+'</div>'+
+             '<div class="es">'+escapeHtml(sec.why_es)+'</div></div>';
+    sec.pairs.forEach(p=>{
+      html+='<div class="pair">'+cardHtml(p.left)+'<div class="swap">↔</div>'+cardHtml(p.right)+'</div>';
+    });
+    html+='<button class="quizbtn" data-sec="'+sec.id+'"><span class="ico">🎧</span> Quiz: '+escapeHtml(sec.name)+'</button>';
+    if(i<CURR.sections.length-1) html+='<div class="divider"></div>';
+    s.innerHTML=html;
+    main.appendChild(s);
+  });
+
+  function cardHtml(item){
+    const key = item.speakAs || item.word;
+    return '<button class="card" data-word="'+escapeHtml(item.word)+'" data-say="'+escapeHtml(item.speakAs||item.word)+'" data-key="'+escapeHtml(key)+'">'+
+      '<span class="spk">🔊</span>'+
+      '<span class="w">'+escapeHtml(item.word)+'</span>'+
+      '<span class="p">'+escapeHtml(item.phon)+'</span>'+
+      '<span class="e">'+escapeHtml(item.es)+'</span></button>';
+  }
+
+  // card taps
+  main.addEventListener('click',e=>{
+    const card=e.target.closest('.card');
+    if(card){ speak(card.dataset.say, card.dataset.key, card); return; }
+    const qb=e.target.closest('.quizbtn');
+    if(qb){ openQuiz(qb.dataset.sec); }
+  });
+
+  // active tab on scroll
+  const secEls = CURR.sections.map(s=>document.getElementById('sec-'+s.id));
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const id=en.target.id.replace('sec-','');
+        document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.target===id));
+        const at=document.querySelector('.tab.active');
+        if(at) at.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secEls.forEach(el=>io.observe(el));
+
+  refreshTotals();
+
+  /* =========================================================
+     QUIZ
+     ========================================================= */
+  const overlay=$('#overlay');
+  let qSec=null, qQuestion=null, qAnswered=false, qOkN=0, qNoN=0, qStreak=0, qCount=0;
+
+  function openQuiz(secId){
+    qSec = CURR.sections.find(s=>s.id===secId);
+    qOkN=0;qNoN=0;qStreak=0;qCount=0;
+    $('#qTitle').textContent=qSec.name;
+    updateQStats();
+    overlay.classList.add('show');
+    document.body.style.overflow='hidden';
+    nextQuestion();
+  }
+  function closeQuiz(){
+    overlay.classList.remove('show');
+    document.body.style.overflow='';
+    stopAll();
+  }
+  $('#qClose').addEventListener('click',closeQuiz);
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeQuiz(); });
+
+  function nextQuestion(){
+    qAnswered=false; qCount++;
+    $('#qProg').textContent='Pregunta '+qCount;
+    $('#qFeedback').textContent=''; $('#qFeedback').className='qfeedback';
+    $('#qNext').classList.remove('on');
+    const pair = qSec.pairs[Math.floor(Math.random()*qSec.pairs.length)];
+    const side = Math.random()<0.5 ? 'left':'right';
+    const target = pair[side];
+    // randomize option order
+    const opts = Math.random()<0.5 ? [pair.left,pair.right] : [pair.right,pair.left];
+    qQuestion={pair,target,opts,key:(target.speakAs||target.word)};
+    const wrap=$('#qOpts'); wrap.innerHTML='';
+    opts.forEach(o=>{
+      const b=document.createElement('button');
+      b.className='qopt';
+      b.innerHTML='<span class="w">'+escapeHtml(o.word)+'</span><span class="p">'+escapeHtml(o.phon)+'</span>';
+      b.addEventListener('click',()=>answer(o,b));
+      wrap.appendChild(b);
+    });
+    setTimeout(playQ,260);
+  }
+  function playQ(){
+    const t=qQuestion.target;
+    const btn=$('#bigPlay'); btn.classList.add('playing');
+    speak(t.speakAs||t.word, t.speakAs||t.word, null);
+    setTimeout(()=>btn.classList.remove('playing'),900);
+  }
+  $('#bigPlay').addEventListener('click',playQ);
+
+  function answer(chosen,btn){
+    if(qAnswered) return;
+    qAnswered=true;
+    const correct = (chosen.word===qQuestion.target.word);
+    // reveal phonetics on both
+    document.querySelectorAll('.qopt').forEach(o=>o.classList.add('reveal'));
+    if(correct){
+      btn.classList.add('correct');
+      qOkN++; qStreak++;
+      const s=secScore(qSec.id); s.ok++; s.total++; scores[qSec.id]=s; saveScores();
+      $('#qFeedback').textContent='✓ ¡Correcto! '+qQuestion.target.word;
+      $('#qFeedback').className='qfeedback good';
+    } else {
+      btn.classList.add('wrong');
+      // highlight the right one
+      document.querySelectorAll('.qopt').forEach(o=>{
+        if(o.querySelector('.w').textContent===qQuestion.target.word) o.classList.add('correct');
+      });
+      qNoN++; qStreak=0;
+      const s=secScore(qSec.id); s.total++; scores[qSec.id]=s; saveScores();
+      $('#qFeedback').textContent='✗ Era: '+qQuestion.target.word+' '+qQuestion.target.phon;
+      $('#qFeedback').className='qfeedback bad';
+    }
+    updateQStats();
+    $('#qNext').classList.add('on');
+  }
+  function updateQStats(){
+    $('#qOk').textContent=qOkN; $('#qNo').textContent=qNoN; $('#qStreak').textContent=qStreak;
+  }
+  $('#qNext').addEventListener('click',nextQuestion);
+
+  /* ---------- iOS audio unlock on first touch ---------- */
+  let unlocked=false;
+  function unlock(){
+    if(unlocked) return; unlocked=true;
+    if(window.speechSynthesis){
+      const u=new SpeechSynthesisUtterance(' '); u.volume=0; try{speechSynthesis.speak(u);}catch(e){}
+    }
+  }
+  document.body.addEventListener('touchstart',unlock,{once:true});
+  document.body.addEventListener('click',unlock,{once:true});
+
+  /* ---------- tiny toast helper ---------- */
+  window.toast=function(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1800); };
+})();
+</script>
+</body>
+</html>
